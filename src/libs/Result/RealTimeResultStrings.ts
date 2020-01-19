@@ -1,8 +1,9 @@
 import { ResultCode } from './ResultCode';
+import { CONSOLE_FORMAT } from '../config';
 
 export const RealTimeResultStrings: { [ T in ResultCode ]: string } = {
     [ResultCode.PASSED]: '.',
-    [ResultCode.FAILED]: '\x1b[35mF\x1b[0m',
-    [ResultCode.ERROR]: '\x1b[41mE\x1b[0m',
-    [ResultCode.UNSAFE]: 'U',
+    [ResultCode.FAILED]: `${CONSOLE_FORMAT.MAGENTA}F${CONSOLE_FORMAT.END}`,
+    [ResultCode.ERROR]: `${CONSOLE_FORMAT.RED_BG}E${CONSOLE_FORMAT.END}`,
+    [ResultCode.UNSAFE]: `${CONSOLE_FORMAT.BLUE}U${CONSOLE_FORMAT.END}`,
 };

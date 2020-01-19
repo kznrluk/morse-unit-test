@@ -1,5 +1,12 @@
 import { ResultObject, TestResult } from '../Result/ResultObject';
 import { ResultCode } from '../Result/ResultCode';
+import { CONSOLE_FORMAT } from '../config';
+
+const createMessageHeader = (code: ResultCode) => {
+    if (code === ResultCode.ERROR) return `${CONSOLE_FORMAT.RED_BG} ${ResultCode[code].padEnd(7, ' ')}${CONSOLE_FORMAT.END}`;
+    if (code === ResultCode.FAILED) return `${CONSOLE_FORMAT.MAGENTA_BG} ${ResultCode[code].padEnd(7, ' ')}${CONSOLE_FORMAT.END}`;
+    if (code === ResultCode.UNSAFE) return `${CONSOLE_FORMAT.BLUE_BG} ${ResultCode[code].padEnd(7, ' ')}${CONSOLE_FORMAT.END}`;
+}
 
 const createMessage = (result: ResultObject) => {
     if (result.resultCode === ResultCode.ERROR) return result.error!.toString();
@@ -17,13 +24,13 @@ export const ConsoleOutResults = (results: TestResult[]): void => {
     const failedCount = allAssertions.length - passedCount;
 
     if (failedCount) {
+        process.exitCode = 1;
         console.log(`\nThere were ${failedCount} failures:\n`)
         results.forEach(r => {
             r.results.forEach(e => {
                 if (e.resultCode !== ResultCode.PASSED) {
-                    console.log(`${ResultCode[e.resultCode].padEnd(8, ' ')}: ${r.name}`);
-                    console.log(`${''.padEnd(8, ' ')}  ${createMessage(e)}`);
-                    console.log();
+                    console.log(`${createMessageHeader(e.resultCode)} - ${r.name}`);
+                    console.log(`${''.padEnd(8, ' ')}   ${createMessage(e)}\n`);
                 }
             })
         });
