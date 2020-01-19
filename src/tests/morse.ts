@@ -1,6 +1,8 @@
 import { Assert } from '../libs/types/Assert';
 import { doTest } from '../Morse';
 
+const timeOut = (n: number) => new Promise(res => setTimeout(() => res('done'), n));
+
 const tests = {
     'passWithBoolean': (assert: Assert) => {
         assert(true);
@@ -34,30 +36,26 @@ const tests = {
         )
     },
 
-    'async':  (assert: Assert): Promise<void> => {
-        return new Promise((res) => {
-            setTimeout(() => {
-                assert(true);
-                res(void 0);
-            }, 1000)
-        });
+    'async': async (assert: Assert) => {
+        const result = await timeOut(1000);
+        assert('done', result);
     },
 
-    'errorPromise': (assert: Assert): Promise<void> => {
-        return new Promise((res) => {
-            setTimeout(() => {
-                assert(false);
-                res(void 0);
-            }, 1000)
-        });
+    'asyncError': async (assert: Assert) => {
+        const result = await timeOut(500);
+        throw new Error('message');
     },
 
-    'errorAsync': async (assert: Assert): Promise<void> => {
-        setTimeout(() => {
-            assert(false);
-            return void 0
-        }, 1000);
+    'promise': (assert: Assert) => {
+        return new Promise<void>(res => {
+            timeOut(500).then((result) => {
+                assert('done', result);
+                res(void 0);
+            });
+        })
     },
+
+
 };
 
 doTest(tests);

@@ -43,21 +43,19 @@ const test = async ([name, testFunc]: [string, (assert: Assert) => void]): Promi
 
     try {
         await testFunc(createAssertFunction(results));
-        if (!results.length) {
-            results.push({
-                resultCode: ResultCode.UNSAFE
-            });
-        }
-        return { name, results };
     } catch (e) {
         results.push({
             resultCode: ResultCode.ERROR, error: e,
         });
-        return { name, results };
     }
 
+    if (!results.length) {
+        results.push({
+            resultCode: ResultCode.UNSAFE
+        });
+    }
 
-
+    return { name, results };
 };
 
 export const doTest = async (testObjects: TestObject) => {
@@ -65,14 +63,7 @@ export const doTest = async (testObjects: TestObject) => {
     console.log('-- --- .-. ... .  - . ... -  .-. ..- -. -. . .-. ');
     console.log('\n-------------------- RESULT --------------------');
     const testEntries = Object.entries(testObjects);
-    // const resultObjects: TestResult[] = testEntries.map(test);
-    const resultObjects: TestResult[] = [];
-    resultObjects.push(
-        await test(testEntries[testEntries.length - 2])
-    );
-    resultObjects.push(
-        await test(testEntries[testEntries.length - 1])
-    );
+    const resultObjects: TestResult[] = await Promise.all(testEntries.map(test));
     console.log('\n------------------------------------------------');
     ConsoleOutResults(resultObjects);
     console.log('Done.');
