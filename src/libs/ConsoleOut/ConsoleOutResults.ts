@@ -21,7 +21,8 @@ const createStaticsText = (tests: number, assertions: number, failures: number, 
 
 export const ConsoleOutResults = (statics: TestStatics): void => {
     if (statics.failed) {
-        console.log(`\nThere were ${statics.failed} failures:\n`)
+        const failures = statics.failed + statics.error + statics.unsafe;
+        console.log(`\nThere were ${failures} failures:\n`)
         statics.allTestResult.forEach(r => {
             r.results.forEach(e => {
                 if (e.resultCode !== ResultCode.PASSED) {
