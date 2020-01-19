@@ -1,0 +1,26 @@
+{
+  "name": "morse-testrunner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/morse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kznrluk/morse-testrunner.git"
+  },
+  "keywords": [],
+  "author": "Kazunari Sasa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kznrluk/morse-testrunner/issues"
+  },
+  "homepage": "https://github.com/kznrluk/morse-testrunner#readme",
+  "devDependencies": {
+    "@types/node": "^13.1.8",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.0",
+    "typescript": "^3.7.5"
+  }
+}
