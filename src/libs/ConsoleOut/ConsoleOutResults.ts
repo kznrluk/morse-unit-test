@@ -1,6 +1,7 @@
 import { ResultObject, TestResult } from '../Result/ResultObject';
 import { ResultCode } from '../Result/ResultCode';
 import { CONSOLE_FORMAT } from '../config';
+import { TestStatics } from '../types/TestStatics';
 
 const createMessageHeader = (code: ResultCode) => {
     if (code === ResultCode.ERROR) return `${CONSOLE_FORMAT.RED_BG} ${ResultCode[code].padEnd(7, ' ')}${CONSOLE_FORMAT.END}`;
@@ -15,18 +16,13 @@ const createMessage = (result: ResultObject) => {
     if (result.arguments && result.arguments.length === 2) return `Failed asserting that '${result.arguments[1]}' is expected '${result.arguments[0]}'.`;
 };
 
-const createStaticsText = (tests: number, assertions: number, failtures: number) =>
-    `Tests: ${tests}, Assertions: ${assertions}, Failures: ${failtures}.`;
+const createStaticsText = (tests: number, assertions: number, failures: number, error: number, unsafe: number) =>
+    `Tests: ${tests}, Assertions: ${assertions}, Failures: ${failures}, Errors: ${error}, Unsafe: ${unsafe}`;
 
-export const ConsoleOutResults = (results: TestResult[]): void => {
-    const allAssertions = results.map(e => e.results).flat();
-    const passedCount = allAssertions.filter(e => e.resultCode === ResultCode.PASSED).length;
-    const failedCount = allAssertions.length - passedCount;
-
-    if (failedCount) {
-        process.exitCode = 1;
-        console.log(`\nThere were ${failedCount} failures:\n`)
-        results.forEach(r => {
+export const ConsoleOutResults = (statics: TestStatics): void => {
+    if (statics.failed) {
+        console.log(`\nThere were ${statics.failed} failures:\n`)
+        statics.allTestResult.forEach(r => {
             r.results.forEach(e => {
                 if (e.resultCode !== ResultCode.PASSED) {
                     console.log(`${createMessageHeader(e.resultCode)} - ${r.name}`);
@@ -36,5 +32,5 @@ export const ConsoleOutResults = (results: TestResult[]): void => {
         });
     }
 
-    console.log(createStaticsText(results.length, allAssertions.length, failedCount));
+    console.log(createStaticsText(statics.allTestResult.length, statics.assertions, statics.failed, statics.error, statics.unsafe));
 };
