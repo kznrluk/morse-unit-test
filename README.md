@@ -11,6 +11,13 @@ Morse has the following features.
 # How to Use
 Morse provides only a minimal test environment.
 
+#$$ #0 Install
+You can install from `npm` command.
+
+```
+npm install --save-dev morse-unit-test
+```
+
 ### #1 Write a test
 Tests can be run on any directory or file.
 Tests are defined as functions in objects.
