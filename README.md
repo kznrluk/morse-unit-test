@@ -2,13 +2,16 @@
 
 Morse is a simple, easy-to-use unit test runner for JavaScript / TypeScript.
 
-Morse has the following features.
-* No special command, No complex document. Simple to use.
+## Why Morse?
+* No special command
+* No complex document
 * High speed operation by parallel test execution
+* Easy-to-read test results
+* Async function support
 * Zero runtime dependencies
 * Easy to extend because it is based on the default functions of JS
 
-# How to Use
+## How to Use
 Morse provides only a minimal test environment.
 
 ### #0 Install
