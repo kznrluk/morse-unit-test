@@ -44,9 +44,9 @@ Currently, the order of testing is not guaranteed. In particular, when performin
 ### #2 Run the test
 Execute directly with the `node` command.
 
-`` `
+```
 node yourTest.js
-`` `
+```
 
 ### #3 See the results
 The results are displayed in the console.
