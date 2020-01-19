@@ -1,4 +1,4 @@
-# Morse Test Runner
+# Morse Unit Test Runner
 
 Morse is a simple, easy-to-use unit test runner for JavaScript / TypeScript.
 

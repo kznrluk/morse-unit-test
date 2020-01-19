@@ -1,4 +1,4 @@
-# Morse Test Runner
+# Morse Unit Test Runner
 
 Morse(モールス)は、すぐに使えるシンプルで扱いやすいJavaScript用のユニットテストランナーです。
 
