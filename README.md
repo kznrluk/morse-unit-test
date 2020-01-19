@@ -11,7 +11,7 @@ Morse has the following features.
 # How to Use
 Morse provides only a minimal test environment.
 
-#$$ #0 Install
+### #0 Install
 You can install from `npm` command.
 
 ```
