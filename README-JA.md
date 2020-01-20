@@ -2,6 +2,8 @@
 
 Morse(モールス)は、すぐに使えるシンプルで扱いやすいJavaScript用のユニットテストランナーです。
 
+[English Document Available](./README.md)
+
 ## Why Morse?
 * 特別なコマンド不要
 * 複雑なドキュメントなし

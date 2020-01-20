@@ -2,6 +2,8 @@
 
 Morse is a simple, easy-to-use unit test runner for JavaScript / TypeScript.
 
+[Japanese Document Available](./README-JA.md)
+
 ## Why Morse?
 * No special command
 * No complex document
