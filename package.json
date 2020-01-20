@@ -12,6 +12,9 @@
   },
   "keywords": [],
   "author": "Kazunari Sasa",
+  "contributors": [
+    "kqito <29191111+kqito@users.noreply.github.com> (https://github.com/kqito)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kznrluk/morse-unit-test/issues"
