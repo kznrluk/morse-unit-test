@@ -6,16 +6,16 @@ import { ArrayWithRealTimeOutput } from './ArrayExtended';
 const createAssertFunction = (results: ResultObject[]): Assert => (a, b): void => {
     if (a !== undefined && b !== undefined) {
         results.push({
-            resultCode: a === b ? ResultCode.PASSED : ResultCode.FAILED,
-            arguments: [a, b]
-        })
+            'resultCode': a === b ? ResultCode.PASSED : ResultCode.FAILED,
+            'arguments': [a, b],
+        });
     } else if (typeof a === 'boolean' && b === undefined) {
         results.push({
-            resultCode: a ? ResultCode.PASSED : ResultCode.FAILED,
-            arguments: [a]
+            'resultCode': a ? ResultCode.PASSED : ResultCode.FAILED,
+            'arguments': [a],
         });
     } else {
-        results.push({ resultCode: ResultCode.UNSAFE });
+        results.push({ 'resultCode': ResultCode.UNSAFE });
     }
 };
 
@@ -26,13 +26,13 @@ export const test = async ([name, testFunc]: [string, (assert: Assert) => void])
         await testFunc(createAssertFunction(results));
     } catch (e) {
         results.push({
-            resultCode: ResultCode.ERROR, error: e,
+            'resultCode': ResultCode.ERROR, 'error': e,
         });
     }
 
     if (!results.length) {
         results.push({
-            resultCode: ResultCode.UNSAFE
+            'resultCode': ResultCode.UNSAFE,
         });
     }
 

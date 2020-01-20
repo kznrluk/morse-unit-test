@@ -13,17 +13,20 @@ export const doTest = async (testObjects: TestObject): Promise<TestStatics> => {
     const testEntries = Object.entries(testObjects);
     const resultObjects: TestResult[] = await Promise.all(testEntries.map(test));
     console.log('\n+----------------------------------------------+');
-    const allAssertions = resultObjects.map(e => e.results).flat();
-    const passed = allAssertions.filter(e => e.resultCode === ResultCode.PASSED).length;
-    const unsafe = allAssertions.filter(e => e.resultCode === ResultCode.UNSAFE).length;
-    const failed = allAssertions.filter(e => e.resultCode === ResultCode.FAILED).length;
-    const error = allAssertions.filter(e => e.resultCode === ResultCode.ERROR).length;
+    const allAssertions = resultObjects.map((e) => e.results).flat();
+    const passed = allAssertions.filter((e) => e.resultCode === ResultCode.PASSED).length;
+    const unsafe = allAssertions.filter((e) => e.resultCode === ResultCode.UNSAFE).length;
+    const failed = allAssertions.filter((e) => e.resultCode === ResultCode.FAILED).length;
+    const error = allAssertions.filter((e) => e.resultCode === ResultCode.ERROR).length;
 
     const testStatics = {
-        assertions: allAssertions.length,
-        passed, unsafe, failed, error,
-        allTestResult: resultObjects
-    }
+        'assertions': allAssertions.length,
+        passed,
+        unsafe,
+        failed,
+        error,
+        'allTestResult': resultObjects,
+    };
 
     ConsoleOutResults(testStatics);
 

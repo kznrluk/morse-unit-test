@@ -3,7 +3,7 @@ import { doTest } from '../Morse';
 
 const test = {
     'One Failed': async (assert: Assert) => {
-        const mock = { 'failed': (assert: Assert) => assert(false) }
+        const mock = { 'failed': (assert: Assert) => assert(false) };
         const result = await doTest(mock);
         assert(1, result.failed);
     },
@@ -12,7 +12,7 @@ const test = {
         const mock = {
             'pass_one': (assert: Assert) => assert(true),
             'pass_two': (assert: Assert) => assert(true),
-            'pass_three': (assert: Assert) => assert(true)
+            'pass_three': (assert: Assert) => assert(true),
         };
 
         const result = await doTest(mock);
@@ -21,7 +21,7 @@ const test = {
         assert(0, result.error);
         assert(0, result.unsafe);
         assert(0, result.error);
-    }
-}
+    },
+};
 
 doTest(test);

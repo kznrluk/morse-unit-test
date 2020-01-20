@@ -18,6 +18,16 @@
     "rules": {
         "no-console": 0,
         "indent": 0,
-        "@typescript-eslint/indent": ["error", 4]
+        "@typescript-eslint/indent": [
+            "error",
+            4
+        ],
+        "import/prefer-default-export": 0,
+        "max-len": 0,
+        "no-shadow": 0,
+        "quote-props": [
+            "error",
+            "always"
+        ]
     }
 }
