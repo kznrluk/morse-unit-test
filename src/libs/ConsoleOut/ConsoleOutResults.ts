@@ -20,8 +20,8 @@ const createMessage = (result: ResultObject) => {
 const createStaticsText = (tests: number, assertions: number, failures: number, error: number, unsafe: number) => `Tests: ${tests}, Assertions: ${assertions}, Failures: ${failures}, Errors: ${error}, Unsafe: ${unsafe}`;
 
 export const ConsoleOutResults = (statics: TestStatics): void => {
-    if (statics.failed) {
-        console.log(`\nThere were ${statics.failed} failures:\n`);
+    if (statics.failed || statics.error) {
+        console.log(`\nThere were ${statics.failed} failures and ${statics.error} errors:\n`);
         statics.allTestResult.forEach((r) => {
             r.results.forEach((e) => {
                 if (e.resultCode !== ResultCode.PASSED) {
