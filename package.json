@@ -1,6 +1,6 @@
 {
   "name": "morse-unit-test",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple, easy, fast unit test runner for JavaScript / TypeScript",
   "main": "build/morse.js",
   "scripts": {
