@@ -1,5 +1,9 @@
 # Morse Unit Test Runner
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/kznrluk/morse-unit-test/docs/errors.png" alt="errors">
+</p>
+
 Morse(モールス)は、すぐに使えるシンプルで扱いやすいJavaScript用のユニットテストランナーです。
 
 [English Document Available](./README.md)
@@ -16,14 +20,14 @@ Morse(モールス)は、すぐに使えるシンプルで扱いやすいJavaScr
 ## How to Use
 Morseは必要最低限のテスト環境のみを提供します。
 
-### #0 インストール
+### #1 インストール
 `npm`コマンドでインストールできます。
 
 ```
 npm install --save-dev morse-unit-test
 ```
 
-### #1 テストを書く
+### #2 テストを書く
 テストはどのようなディレクトリ、ファイルでも実行可能です。
 テストはオブジェクト内に関数として定義します。
 
@@ -34,15 +38,17 @@ npm install --save-dev morse-unit-test
 const Morse = require('Morse');
 
 const tests = {
-    'testTestFailed': (assert) => {
-        assert(2, 1); // failed
+    '失敗するテスト': (assert) => {
+        assert(2, 1); // 失敗
+        // assert(false) // 同じように失敗します
     },
     
-    'testTestPassed': (assert) => {
-        assert(2, 1+1); // passed
+    '成功するテスト': (assert) => {
+        assert(2, 1+1); // 成功
+        // assert(true) // 同じように成功します
     },
 
-    'testAsync': async () => {
+    '非同期関数のテスト': async () => {
         const result = await someAsyncFunction();
         assert(result !== undefined);
     }
@@ -53,31 +59,19 @@ Morse.doTest(tests);
 
 **現状**、テストの順番は保証されません。特に、`async/await`を利用したテストを行う場合、順番が上下する可能性があります。
 
-### #2 テストを実行する
+### #3 テストを実行する
 `node`コマンドで直接実行します。
 
 ```
 node yourTest.js
 ```
 
-### #3 結果を見る
 結果はコンソール内に表示されます。
 
-```
-            Morse Test Runner v0.0.1
--- --- .-. ... .  - . ... -  .-. ..- -. -. . .-.
+![Example Output](https://raw.githubusercontent.com/kznrluk/morse-unit-test/docs/example_output.png)
 
-+--------------- Results ---------------+
-F . .
-+---------------------------------------+
-
-There were 1 failures:
-
- FAILED  - testTestFailed
-           Failed asserting that 2 is expected 1.
-
-Tests: 3, Assertions: 3, Failures: 1.
-```
+### テスト結果の見方
+![Console](https://raw.githubusercontent.com/kznrluk/morse-unit-test/docs/console.png)
 
 アサーションの結果は以下の4種類です。
 * `PASSED (.)` 問題なくテストが完了した。
