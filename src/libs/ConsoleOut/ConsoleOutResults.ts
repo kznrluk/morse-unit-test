@@ -17,9 +17,8 @@ const createMessage = (result: ResultObject) => {
     if (result.arguments && result.arguments.length === 2) return `Failed asserting that '${result.arguments[1]}' is expected '${result.arguments[0]}'.`;
 };
 
-const createStaticsText = (tests: number, assertions: number, passed: number, failures: number, error: number, unsafe: number) => {
-    return `Tests: ${tests}, Assertions: ${assertions}, Passed: ${passed} Failures: ${failures}, Errors: ${error}, Unsafe: ${unsafe}`;
-}
+const createStaticsText = (tests: number, assertions: number, passed: number, failures: number, error: number, unsafe: number) =>
+    `Tests: ${tests}, Assertions: ${assertions}, Passed: ${passed} Failures: ${failures}, Errors: ${error}, Unsafe: ${unsafe}`;
 
 export const ConsoleOutResults = (statics: TestStatics): void => {
     if (statics.failed || statics.error) {

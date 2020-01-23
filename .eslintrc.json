@@ -28,6 +28,7 @@
         "quote-props": [
             "error",
             "always"
-        ]
+        ],
+        "implicit-arrow-linebreak": 0
     }
 }
