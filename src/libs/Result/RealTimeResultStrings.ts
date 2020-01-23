@@ -1,5 +1,5 @@
 import { ResultCode } from './ResultCode';
-import { CONSOLE_FORMAT } from '../config';
+import { CONSOLE_FORMAT } from '../ConsoleOut/Format';
 
 export const RealTimeResultStrings: { [ T in ResultCode ]: string } = {
     [ResultCode.PASSED]: '.',

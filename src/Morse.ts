@@ -1,5 +1,5 @@
 import { TestObject } from './libs/types/TestObject';
-import * as CONFIG from './libs/config';
+import * as CONFIG from './config';
 import { TestResult } from './libs/Result/ResultObject';
 import { ConsoleOutResults } from './libs/ConsoleOut/ConsoleOutResults';
 import { test } from './libs/Test';

@@ -1,7 +1,7 @@
 import { ResultObject } from '../Result/ResultObject';
 import { ResultCode } from '../Result/ResultCode';
-import { CONSOLE_FORMAT } from '../config';
 import { TestStatics } from '../types/TestStatics';
+import { CONSOLE_FORMAT } from './Format';
 
 /* eslint-disable consistent-return */
 const createMessageHeader = (code: ResultCode) => {

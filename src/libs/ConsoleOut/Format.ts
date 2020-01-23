@@ -1,6 +1,3 @@
-export const VERSION = 'v0.0.1';
-export const OPENING_MESSAGE = `Thank you for using Morse Test Runner ${VERSION}`;
-
 export const CONSOLE_FORMAT = {
     'RED': '\u001b[91m',
     'BLUE': '\u001b[94m',
