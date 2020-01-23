@@ -4,47 +4,47 @@ import { doTest } from '../Morse';
 const timeOut = (n: number) => new Promise((res) => setTimeout(() => res('done'), n));
 
 const tests = {
-    'passWithBoolean': (assert: Assert) => {
+    'Passed by boolean': (assert: Assert) => {
         assert(true);
     },
 
-    'failedWithBoolean': (assert: Assert) => {
+    'Failed by boolean': (assert: Assert) => {
         assert(false);
     },
 
-    'passWithAssertion': (assert: Assert) => {
+    'Passed by assertion': (assert: Assert) => {
         assert(1, 1);
         assert('aaa', 'aaa');
     },
 
-    'failedWithAssertion': (assert: Assert) => {
+    'Failed by assertion': (assert: Assert) => {
         assert(1, 2);
         assert('aaa', 'bbb');
     },
 
-    'errorWithThrow': () => {
-        throw new Error('Message hogehoge');
+    'Error by throw': () => {
+        throw new Error('Error message here');
     },
 
-    'unsafe': () => {
+    'Unsafe test': () => {
         //
     },
 
-    'breakLine': (assert: Assert) => {
+    'Break line': (assert: Assert) => {
         [...Array(25)].forEach(() => assert(true));
     },
 
-    'async': async (assert: Assert) => {
+    'Test with async': async (assert: Assert) => {
         const result = await timeOut(1000);
         assert('done', result);
     },
 
-    'asyncError': async () => {
+    'Async failed by error': async () => {
         await timeOut(500);
-        throw new Error('message');
+        throw new Error('Error message here');
     },
 
-    'promise': (assert: Assert) => new Promise<void>((res) => {
+    'Test with Promise': (assert: Assert) => new Promise<void>((res) => {
         timeOut(500).then((result) => {
             assert('done', result);
             res(undefined);
