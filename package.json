@@ -2,7 +2,7 @@
   "name": "morse-unit-test",
   "version": "0.1.2",
   "description": "Simple, easy, fast unit test runner for JavaScript / TypeScript",
-  "main": "build/morse.js",
+  "main": "build/Morse.js",
   "scripts": {
     "test": "node build/tests/self.js"
   },
